@@ -1,11 +1,16 @@
 # Build stage
 FROM docker.io/library/node:20-alpine AS build
 
+RUN npm config set fetch-retries 5 && \
+    npm config set fetch-retry-mintimeout 60000 && \
+    npm config set fetch-retry-maxtimeout 120000 && \
+    npm config set timeout 120000
+
 WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm ci
+RUN npm install
 
 COPY . .
 
