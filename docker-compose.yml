@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   mongodb:
-    image: docker.io/library/mongo:7.0
+    image: docker.io/library/mongo:4.4
     container_name: finance-mongodb
     command: ["--config", "/etc/mongod.conf", "--nojournal", "--wiredTigerCacheSizeGB=0.2", "--maxConns=50"]
     ports:
